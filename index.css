@@ -3,17 +3,20 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    
 }
 .card .searchBar{
     background-color: rgb(233, 230, 230);
     width: 100%;
-    height: 60px;
+    height: 100px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px rgb(191, 193, 191) inset;
+    text-align: center;
+    
 }
 .card{
     width: 90%;
-    height: auto;
+    height: 800px;
     max-width: 470px;
     background:black;
     color:#fff;
@@ -21,19 +24,95 @@
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    box-shadow: 15px 40px 30px rgb(90, 87, 87);
 }
-table{
-    background-color: rgb(0, 7, 0);
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    border-spacing: 10px;
+    .button {
+        /* 	design the outer circle */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: .33px solid #ddd;
+        box-shadow: 0 0 1.7px 0px #888;
+        position: relative;
+        margin-left: 80%;
+        margin-top: 15px;
     
-}
-td{
-    background: blue;
-    border-radius: 10px;
-    box-shadow: 1px 1px;
+        /* 	required to center elements*/
+        display: grid;
+        place-items: center;
+    }
+    
+    .button::before {
+        /* 	pseudo-elements don't display if content property is not declared */
+        content: "";
+    
+        /* 	design the inner-ring */
+        width: 50%;
+        height: 50%;
+        border: 3.3px solid #eee;
+        border-radius: 50%;
+        position: absolute;
+    }
+    
+    .light {
+        /* 	design the vertical light */
+        height: 30%;
+        width: 3.3px;
+        background: #eee;
+        border-radius: 10px;
+    
+        /* 	position the light correctly */
+        position: absolute;
+        top: 6.7px;
+    
+        /* 	required to give white-space to inner-ring */
+        box-shadow: 0 0 0 3.3px #0f0e0e;
+    }
+    
+    .button:hover {
+        cursor: pointer;
+    }
+    
+    .button:active {
+        box-shadow: 0 0 10px 0px #888 inset;
+    }
+    
+    .button:active .light {
+        background: lightgreen;
+    }
+    
+    .button:active::before {
+        border-color: lightgreen;
+    }
+    
+ @keyframes buttonsGoDown{
+    0%{
+        grid-gap: 900px;
+    }
+    100%{
+        grid-gap: 10px;
+    }
+ }
+ .grid{
+    margin-top: 40px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100px;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 100px);
+    grid-gap: 10px;
+    animation: 2s ease-in 0s 1  buttonsGoDown;
+
+ }
+
+ 
+
+ .grid button{
+    border-radius: 30px;
 
     
-}
+
+   
+ }
+
