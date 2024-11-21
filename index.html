@@ -9,71 +9,141 @@
 <body>
     
     <div class="card">
-        <div class="searchBar">35985y</div>
+        <div id="textForm" class="searchBar"></div>
         <div class="button">
             <div class="light"></div>
         </div>
-        <!-- <table>
-            <tr>
-                <td>M+</td>
-                <td>M-</td>
-                <td>MRC</td>
-                <td>GT</td>
-                <td>C/CE</td>
-            </tr>
-            <tr>
-                <td class="num">7</td>
-                <td class="">8</td>
-                <td>9</td>
-                <td>/</td>
-                <td>></td>
-
-            </tr>
-            <tr>
-                <td class="num">4</td>
-                <td class="num">5</td>
-                <td class="num">6</td>
-                <td>X</td>
-                <td>%</td>
-
-            </tr>
-            <tr>
-                <td class="num">1</td>
-                <td class="num">2</td>
-                <td class="num">3</td>
-                <td>-</td>
-                <td>Root</td>
-
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>00</td>
-                <td>.</td>
-                <td>+</td>
-                <td>=</td> -->
                 <div class="grid">
-                    <button data-all-clear class="span-two">AC</button>
-                    <button data-delete>DEL</button>
-                    <button data-operation>÷</button>
-                    <button data-number>*</button>
-                    <button data-number>1</button>
-                    <button data-number>2</button>
-                    <button data-operation>3</button>
-                    <button data-number>+</button>
-                    <button data-number>4</button>
-                    <button data-number>5</button>
-                    <button data-operation>6</button>
-                    <button data-number>+</button>
-                    <button data-number>7</button>
-                    <button data-number>8</button>
-                    <button data-operation>9</button>
-                    <button data-number>.</button>
-                    <button data-number>0</button>
-                    <button data-equals class="span-two">=</button>
+                    <button id ='data-all-clear'>AC</button>
+                    <button class = 'delete'>DEL</button>
+                    <button class = 'data-operation'>÷</button>
+                    <button class = 'data-operation'>*</button>
+                    <button class = 'number'>1</button>
+                    <button class = 'number'>2</button>
+                    <button class ='number'>3</button>
+                    <button class='data-operation'>+</button>
+                    <button class = 'number'>4</button>
+                    <button class ='number'>5</button>
+                    <button class = 'number'>6</button>
+                    <button class = 'data-operation'>-</button>
+                    <button class = 'number'>7</button>
+                    <button class = 'number'>8</button>
+                    <button class = 'number'>9</button>
+                    <button class = 'number'>.</button>
+                    <button class = 'number'>0</button>
+                    <button id = 'data-equals'>=</button>
                 </div>
             </tr>
         </table>
     </div>
-    <script src="index.js"></script>
+    <script >
+    //my buttons------------------------------------------------
+    const numbersBtn = document.querySelectorAll('.number')
+    const displayBar = document.getElementById('textForm')
+    const clearBtn =  document.getElementById('data-all-clear')
+    const deleteBtn = document.querySelector('.delete')
+    const operatorBtn = document.querySelectorAll('.data-operation')
+    const equalBtn = document.getElementById('data-equals')
+   //------------------------------------------------------------------
+        let resetToNothing = displayBar.innerHTML
+        let usedValue1 = null;
+        let value = undefined;
+        let operator;
+        let value2 = undefined;
+//number Input----------------------------------------------
+        numbersBtn.forEach(element => { 
+            element.addEventListener('click', function() {
+                if(!usedValue1){
+                     if(value === undefined || 0){
+                value = element.innerText.toString();
+                displayBar.innerHTML = value
+              }else{
+                 value += element.innerText.toString();
+              displayBar.innerHTML = value
+              
+              }
+            }else{
+                if(value2 === undefined || 0){
+                value2 = element.innerText.toString();
+                displayBar.innerHTML = value2
+              }else{
+                 value2 += element.innerText.toString();
+              displayBar.innerHTML = value2
+              
+              }
+            }
+             
+            });
+   
+          }); 
+ //-------------------------------------------------------------
+
+
+ //reset on the clear Btn----------------------------------------
+    clearBtn.addEventListener('click', () => {
+        displayBar.innerHTML = resetToNothing
+        value = resetToNothing
+        value2 = resetToNothing
+    })
+//-----------------------------------------------------------------
+
+//delete button-----------------------------------------------------------------
+
+    deleteBtn.addEventListener('click', () => {
+         newStr = value.slice(0, value.length-1)
+         console.log(newStr)
+        value = newStr
+        displayBar.innerHTML = value
+    })
+
+
+       // -----------------------------------------------------------------
+    
+
+//grab an operator-----------------------------------------------------------------
+    operatorBtn.forEach(element => { 
+        element.addEventListener('click', function(){
+            let symbol = element.innerHTML
+            operator = symbol;
+            usedValue1 = 1
+        })
+    })
+
+    //activate the operation buttons and reset
+
+    equalBtn.addEventListener('click', () => {
+        operator = operator.toString()
+        let answer
+        switch (operator) {
+      case '+':
+        value = Number(value) +  Number(value2);
+        reset()
+        break
+      case "-":
+      value = Number(value) -  Number(value2);
+      reset()
+      break
+      case "*":
+      value = Number(value) *  Number(value2);
+      reset()
+      break
+      case "÷":
+        // if (value2 === 0) {
+        //   answer = "Error: Division by zero!";
+        // }
+        value = Number(value) /  Number(value2);
+      reset()
+      break
+    }
+    
+  })
+
+  function reset(){
+        displayBar.innerHTML = value
+        value = resetToNothing
+        value2 = resetToNothing
+        usedValue1 = null
+  }
+          </script>
 </body>
 </html>
