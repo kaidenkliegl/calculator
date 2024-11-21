@@ -5,17 +5,22 @@
     box-sizing: border-box;
     
 }
+body{
+    background-image: url('./images/istockphoto-1419844586-612x612.jpg');
+    background-size: cover;
+}
 .card .searchBar{
-    background-color: rgb(233, 230, 230);
+    border: 1px solid white;
+    background: silver;
     width: 100%;
     height: 100px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 10px rgb(212, 225, 225);
+    box-shadow: none;
     text-align: right;
     line-height: 100px;
     font-size: 60px;
     color: rgb(11, 0, 0);
-    background-color: rgb(255, 255, 255);
+    
     
 }
 .card{
@@ -29,7 +34,15 @@
     padding: 40px 35px;
     text-align: center;
     box-shadow: 15px 40px 30px rgb(90, 87, 87);
+    
 }
+    .powerButton{
+        margin-left: 80%;
+        background-color:transparent ;
+        border-color: transparent;
+        
+        
+    }
     .button {
         /* 	design the outer circle */
         width: 50px;
@@ -38,8 +51,11 @@
         border: .33px solid #ddd;
         box-shadow: 0 0 1.7px 0px #888;
         position: relative;
-        margin-left: 80%;
+        margin-left: auto;
         margin-top: 20px;
+        
+    
+       
     
         /* 	required to center elements*/
         display: grid;
@@ -90,14 +106,6 @@
     }
     
     
- @keyframes buttonsGoDown{
-    0%{
-        grid-gap: 900px;
-    }
-    100%{
-        grid-gap: 10px;
-    }
- }
  .grid{
     margin-top: 40px;
     display: grid;
@@ -117,6 +125,9 @@
     border-radius: 30px;
     background-color: rgb(74, 248, 74);
     font-size: 30px;
+    opacity: 0;
+    
+    
     
 
     

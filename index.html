@@ -10,28 +10,31 @@
     
     <div class="card">
         <div id="textForm" class="searchBar"></div>
-        <div class="button">
+        <button class="powerButton">
+            <div class="button">
             <div class="light"></div>
         </div>
+        </button>
+        
                 <div class="grid">
-                    <button id ='data-all-clear'>C</button>
-                    <button class = 'delete'>DEL</button>
-                    <button class = 'data-operation'>÷</button>
-                    <button class = 'data-operation'>*</button>
-                    <button class = 'number'>1</button>
-                    <button class = 'number'>2</button>
-                    <button class ='number'>3</button>
-                    <button class='data-operation'>+</button>
-                    <button class = 'number'>4</button>
-                    <button class ='number'>5</button>
-                    <button class = 'number'>6</button>
-                    <button class = 'data-operation subtraction'>-</button>
-                    <button class = 'number'>7</button>
-                    <button class = 'number'>8</button>
-                    <button class = 'number'>9</button>
-                    <button id = 'data-equals'>=</button>
-                    <button class = 'number zero'>0</button>
-                    <button class = 'number'>.</button>
+                    <button id ='data-all-clear' class="btns">C</button>
+                    <button class = 'delete btns'>DEL</button>
+                    <button class = 'data-operation btns'>÷</button>
+                    <button class = 'data-operation btns'>*</button>
+                    <button class = 'number btns'>1</button>
+                    <button class = 'number btns'>2</button>
+                    <button class ='number btns'>3</button>
+                    <button class='data-operation btns'>+</button>
+                    <button class = 'number btns'>4</button>
+                    <button class ='number btns'>5</button>
+                    <button class = 'number btns'>6</button>
+                    <button class = 'data-operation subtraction btns'>-</button>
+                    <button class = 'number btns'>7</button>
+                    <button class = 'number btns'>8</button>
+                    <button class = 'number btns'>9</button>
+                    <button id = 'data-equals' class="btns">=</button>
+                    <button class = 'number zero btns'>0</button>
+                    <button class = 'number btns'>.</button>
                     <button></button>
                     
                     
@@ -41,12 +44,14 @@
     </div>
     <script >
     //my buttons------------------------------------------------
+    const gridBtns = document.querySelectorAll('.btns')
     const numbersBtn = document.querySelectorAll('.number')
     const displayBar = document.getElementById('textForm')
     const clearBtn =  document.getElementById('data-all-clear')
     const deleteBtn = document.querySelector('.delete')
     const operatorBtn = document.querySelectorAll('.data-operation')
     const equalBtn = document.getElementById('data-equals')
+    const powerButton = document.querySelector('.powerButton')
    //------------------------------------------------------------------
         let resetToNothing = displayBar.innerHTML
         let usedValue1 = null;
@@ -147,6 +152,30 @@
         value2 = resetToNothing
         usedValue1 = null
   }
+
+// power button to turn the screen on 
+powerButton.addEventListener('click', function () {
+    if(displayBar.style.background === 'white'){
+        displayBar.style.background = 'silver'
+        displayBar.style.boxShadow = 'none'
+    }else{
+        displayBar.style.background = 'white'
+        displayBar.style.boxShadow = '0px 0px 10px 10px rgb(212, 225, 225)'
+    }
+    
+for (const element of gridBtns) {
+    console.log(element.style.opacity)
+    if(element.style.opacity == 0){
+        
+        element.style.opacity = 1
+    }else{
+        element.style.opacity = 0
+    }
+    
+}
+})
+
+
           </script>
 </body>
 </html>
