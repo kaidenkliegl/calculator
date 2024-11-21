@@ -129,6 +129,13 @@
         width: 95px;
         border-color: blue;
     }
+    .grid .zero:active {
+        box-shadow: 0 0 20px 0px #888 inset;
+        height: 95px;
+        width: 205px;
+        border-color: blue;
+        grid-column: span 2;
+    }
     .zero{
        grid-column: span 2;
     }
