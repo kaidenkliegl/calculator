@@ -90,7 +90,7 @@
 //delete button-----------------------------------------------------------------
 
     deleteBtn.addEventListener('click', () => {
-         newStr = value.slice(0, value.length-1)
+         newStr = displayBar.innerHTML.slice(0, displayBar.innerHTML.length-1)
          console.log(newStr)
         value = newStr
         displayBar.innerHTML = value
