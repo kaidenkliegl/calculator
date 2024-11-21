@@ -1,8 +1,27 @@
 //create a function that takes any number of arguments
 
-let operations = (...args) => {
-//have your function that test waht the index is 
+//when operator downclicks triggers operations()
 
+
+
+let operator;
+
+
+let operations = (val) => {
+//have your function that test waht the index is 
+let num1 = null;
+
+let num2 = null;
+
+if(num1 === null){
+num1 = val
+}else{
+    num2 = val
+}
+
+if(num1 !== 0 && num2 !== 0){
+    calculate(num1, operator, num2)
+}
 
 }
 
