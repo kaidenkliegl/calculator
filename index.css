@@ -82,12 +82,13 @@
     }
     
     .button:active .light {
-        background: lightgreen;
+        background: rgb(232, 6, 32);
     }
     
     .button:active::before {
-        border-color: lightgreen;
+        border-color: rgb(240, 11, 11);
     }
+    
     
  @keyframes buttonsGoDown{
     0%{
@@ -114,7 +115,8 @@
 
  .grid button{
     border-radius: 30px;
-    background-color: rgb(117, 242, 117);
+    background-color: rgb(74, 248, 74);
+    font-size: 30px;
     
 
     
@@ -125,5 +127,6 @@
         box-shadow: 0 0 20px 0px #888 inset;
         height: 95px;
         width: 95px;
+        border-color: blue;
     }
 
