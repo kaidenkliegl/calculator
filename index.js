@@ -1,60 +1,121 @@
-
-const numbersBtn = document.querySelectorAll('.grid buttom .number')
-
-
-numbersBtn.forEach(element => {
-    numbersBtn.addEventListener('click', function() {
-      console.log('Element clicked!');
-    });
-  });
-
-
-
-//when operator downclicks triggers operations()
-
-
-
+//my buttons------------------------------------------------
+const gridBtns = document.querySelectorAll(".btns");
+const numbersBtn = document.querySelectorAll(".number");
+const displayBar = document.getElementById("textForm");
+const clearBtn = document.getElementById("data-all-clear");
+const deleteBtn = document.querySelector(".delete");
+const operatorBtn = document.querySelectorAll(".data-operation");
+const equalBtn = document.getElementById("data-equals");
+const powerButton = document.querySelector(".powerButton");
+//-------------------------Variables-----------------------------------------
+let resetToNothing = displayBar.innerHTML;
+let usedValue1 = null;
+let value = undefined;
 let operator;
+let value2 = undefined;
 
+//number Input----------------------------------------------
 
-// let operations = (val) => {
-// //have your function that test waht the index is 
-// let num1 = null;
+numbersBtn.forEach((element) => {
+  element.addEventListener("click", function () {
+    if (!usedValue1) {
+      if (value === undefined || 0) {
+        value = element.innerText.toString();
+        displayBar.innerHTML = value;
+      } else {
+        value += element.innerText.toString();
+        displayBar.innerHTML = value;
+      }
+    } else {
+      if (value2 === undefined || 0) {
+        value2 = element.innerText.toString();
+        displayBar.innerHTML = value2;
+      } else {
+        value2 += element.innerText.toString();
+        displayBar.innerHTML = value2;
+      }
+    }
+  });
+});
+//-------------------------------------------------------------
 
-// let num2 = null;
+//reset on the clear Btn----------------------------------------
 
-// if(num1 === null){
-// num1 = val
-// }else{
-//     num2 = val
-// }
+clearBtn.addEventListener("click", () => {
+  displayBar.innerHTML = resetToNothing;
+  value = resetToNothing;
+  value2 = resetToNothing;
+});
+//-----------------------------------------------------------------
 
-// if(num1 !== 0 && num2 !== 0){
-//     calculate(num1, operator, num2)
-// }
+//delete button-----------------------------------------------------------------
 
-// }
+deleteBtn.addEventListener("click", () => {
+  newStr = displayBar.innerHTML.slice(0, displayBar.innerHTML.length - 1);
+  console.log(newStr);
+  value = newStr;
+  displayBar.innerHTML = value;
+});
 
-// // calculate function
+// -----------------------------------------------------------------
 
-// function calculate(num1, operator, num2) {
-//     switch (operator) {
-//       case "+":
-//         return num1 + num2;
-//       case "-":
-//         return num1 - num2;
-//       case "*":
-//         return num1 * num2;
-//       case "/":
-//         if (num2 === 0) {
-//           return "Error: Division by zero!";
-//         }
-//         return num1 / num2;
-//       default:
-//         return "Invalid operator!";
-//     }
-//   }
-  
+//grab an operator-----------------------------------------------------------------
 
-//   //remember to set for export
-// module.exports{}
+operatorBtn.forEach((element) => {
+  element.addEventListener("click", function () {
+    let symbol = element.innerHTML;
+    operator = symbol;
+    usedValue1 = 1;
+  });
+});
+
+//activate the operation buttons and reset---------------------------------
+
+equalBtn.addEventListener("click", () => {
+  operator = operator.toString();
+  let answer;
+  switch (operator) {
+    case "+":
+      value = Number(value) + Number(value2);
+      reset();
+      break;
+    case "-":
+      value = Number(value) - Number(value2);
+      reset();
+      break;
+    case "*":
+      value = Number(value) * Number(value2);
+      reset();
+      break;
+    case "÷":
+      value = Number(value) / Number(value2);
+      reset();
+      break;
+  }
+});
+
+function reset() {
+  displayBar.innerHTML = value;
+  // value = resetToNothing
+  value2 = resetToNothing;
+  usedValue1 = null;
+}
+
+// power button to turn the screen on---------------------------------------------
+powerButton.addEventListener("click", function () {
+  if (displayBar.style.background === "white") {
+    displayBar.style.background = "rgb(219, 216, 216)";
+    displayBar.style.boxShadow = "none";
+  } else {
+    displayBar.style.background = "white";
+    displayBar.style.boxShadow = "0px 0px 10px 10px rgb(212, 225, 225)";
+  }
+  for (const element of gridBtns) {
+    console.log(element.style.opacity);
+    if (element.style.opacity == 0) {
+      element.style.opacity = 1;
+    } else {
+      element.style.opacity = 0;
+    }
+  }
+});
